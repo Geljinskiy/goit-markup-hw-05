@@ -8,6 +8,7 @@
   --secondary-light-color: #f5f4fa;
   --card-item: 4;
   --tertiary-light-color: #afb1b8;
+  --transition-main: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 body {
   font-family: var(--main-font);
@@ -86,9 +87,7 @@ address {
   width: 44px;
   border-radius: 50%;
   cursor: pointer;
-  transition-property: color, background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition-main), background-color var(--transition-main);
 }
 .soc-link:hover,
 .soc-link:focus {
@@ -141,9 +140,7 @@ address {
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition-main);
 }
 .header-link:hover,
 .header-link:focus {
@@ -151,16 +148,15 @@ address {
 }
 .active-link {
   color: var(--primary-brand-color);
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 0;
+  position: relative;
 }
 .active-link::after {
-  margin-top: 28px;
+  position: absolute;
+  bottom: -1px;
   content: '';
   width: 100%;
   height: 4px;
-  background: #2196f3;
+  background: var(--primary-brand-color);
   border-radius: 2px;
 }
 .header-address-list {
@@ -212,9 +208,7 @@ address {
   cursor: pointer;
   font-weight: 700;
   line-height: 1.88;
-  transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--transition-main);
 }
 .order-btn:hover,
 .order-btn:focus {
@@ -255,6 +249,23 @@ address {
 /* advantages */
 .service-item {
   --card-item: 3;
+}
+.service-img {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.service-description {
+  position: absolute;
+  bottom: 0;
+  padding: 27px 0;
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: rgba(47, 48, 58, 0.8);
 }
 /* services */
 .team {
@@ -311,6 +322,13 @@ address {
   display: block;
   margin-bottom: 9px;
 }
+.footer-address-link {
+  transition: color var(--transition-main);
+}
+.footer-address-link:focus,
+.footer-address-link:hover {
+  color: var(--primary-brand-color);
+}
 .footer-address-item {
   display: block;
   color: rgba(255, 255, 255, 0.6);
@@ -356,9 +374,8 @@ address {
   background: #f5f4fa;
   border-radius: 4px;
   border: none;
-  transition-property: color, background-color, box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition-main), background-color var(--transition-main),
+    box-shadow var(--transition-main);
 }
 .active-btn,
 .example-btn:hover,
@@ -373,9 +390,7 @@ address {
 }
 .example-link {
   display: block;
-  transition-property: box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow var(--transition-main);
 }
 .example-link:hover,
 .example-link:focus {
@@ -412,9 +427,7 @@ address {
   top: 0px;
   padding: 63px 24px;
   transform: translateY(100%);
-  transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform var(--transition-main);
   overflow: auto;
 }
 .example-link:focus .example-overline,
@@ -433,9 +446,7 @@ address {
   border: 1px solid currentColor;
   border-radius: 4px;
   cursor: pointer;
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition-main);
 }
 .customer-link:focus,
 .customer-link:hover {
@@ -455,9 +466,7 @@ address {
   height: 100vh;
   width: 100vw;
   background: rgba(0, 0, 0, 0.2);
-  transition-property: opacity, visibility;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity var(--transition-main), visibility var(--transition-main);
 }
 .is-hidden {
   opacity: 0;
@@ -475,6 +484,11 @@ address {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  transition: transform var(--transition-main);
+  transition-duration: 450ms;
+}
+.back-drop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.2) rotate(-90deg);
 }
 .modal-close-btn {
   position: absolute;
